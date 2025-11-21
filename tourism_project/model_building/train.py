@@ -19,10 +19,22 @@ import mlflow
 # ==========================================
 # 1. Configuration & Setup
 # ==========================================
-# Set up MLflow tracking
-mlflow.set_tracking_uri("http://localhost:5000")
-mlflow.set_experiment("tourism-prediction-experiment")
 
+# Set your auth token here (replace with your actual token)
+ngrok.set_auth_token("35GpiJlxPKUMCe5ZHuuzO2HZOnK_4nRL2j8BabB8wgB1bP3s5")
+
+# Start MLflow UI on port 5000
+process = subprocess.Popen(["mlflow", "ui", "--port", "5000"])
+
+# Create public tunnel
+public_url = ngrok.connect(5000).public_url
+print("MLflow UI is available at:", public_url)
+
+# Set the tracking URL for MLflow
+mlflow.set_tracking_uri(public_url)
+
+# Set the name for the experiment
+mlflow.set_experiment("tourism-prediction-experiment")
 
 HF_TOKEN = os.getenv("HF_TOKEN")
 
