@@ -22,8 +22,6 @@ import subprocess
 # 1. Configuration & Setup
 # ==========================================
 
-!pip install mlflow==3.0.1 pyngrok==7.2.12 -q
-
 # Set your auth token here (replace with your actual token)
 ngrok.set_auth_token("35GpiJlxPKUMCe5ZHuuzO2HZOnK_4nRL2j8BabB8wgB1bP3s5")
 
